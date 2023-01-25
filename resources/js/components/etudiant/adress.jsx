@@ -69,11 +69,11 @@ export default function AddressForm() {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
-                        id="address2"
-                        name="address2"
+                        id="mention"
+                        name="mention"
                         label="Mention"
                         fullWidth
-                        autoComplete="shipping address-line2"
+                        autoComplete="mention"
                         variant="outlined"
                         select
                     >
@@ -86,8 +86,8 @@ export default function AddressForm() {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
-                        id="address2"
-                        name="address2"
+                        id="parcours"
+                        name="parcours"
                         label=" Parcours"
                         fullWidth
                         autoComplete="shipping address-line2"
@@ -103,8 +103,8 @@ export default function AddressForm() {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField
-                        id="address2"
-                        name="address2"
+                        id="niveau"
+                        name="niveau"
                         label="Niveau"
                         select
                         defaultValue="L1"

@@ -65,7 +65,7 @@ export default function IndexEtudiant() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <ResponsiveAppBar />
+            <ResponsiveAppBar isLogged={false} />
             <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
                 <Paper
                     variant="outlined"
