@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('demande_validations', function (Blueprint $table) {
+        Schema::create('infomentions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
- 
-            $table->foreign('user_id')->references('id')->on('users');
-            
+            $table->string("mentions");
+            $table->string("parcours");
+            $table->string("niveau");
             $table->timestamps();
+
+            $table->index(["mentions", "parcours", "niveau"]);
         });
     }
 
@@ -30,9 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('demande_validations');
-        $table->dropForeign('demande_validations_user_id_foreign');
-        $table->dropIndex('demande_validations_user_id_index');
-        $table->dropColumn('user_id');
+        Schema::dropIfExists('infomentions');
     }
 };
