@@ -10,10 +10,10 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AddressForm from "./adress";
-import PaymentForm from "./payement";
+import AddressForm from "../adress";
+import PaymentForm from "../payement";
 import { red } from "@mui/material/colors";
-import ResponsiveAppBar from "./appbar";
+import ResponsiveAppBar from "../appbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -88,7 +88,7 @@ const theme = createTheme({
     },
 });
 
-export default function IndexEtudiant() {
+export default function Certificat() {
     const [activeStep, setActiveStep] = React.useState(0);
 
     const handleNext = () => {
@@ -109,7 +109,7 @@ export default function IndexEtudiant() {
         formData.append("email", email);
         formData.append("numcarte", numcarte);
         formData.append("annee", annee);
-        formData.append("type", "validation");
+        formData.append("type", "certificat");
         formData.append("firstname", firstname);
         formData.append("name", name);
         formData.append("birthdate", birthdate);
@@ -126,7 +126,7 @@ export default function IndexEtudiant() {
                     icon: "success",
                     title: "inscrit",
                 });
-                navigate("/");
+                navigate("/certificat");
             })
             .catch(({ response }) => {});
         // console.log({
@@ -160,7 +160,7 @@ export default function IndexEtudiant() {
                     sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
                 >
                     <Typography component="h1" variant="h4" align="center">
-                        Validation de Credit
+                        Certificat de scolarite
                     </Typography>
                     <Stepper activeStep={activeStep} sx={{ pt: 2, pb: 5 }}>
                         {steps.map((label) => (

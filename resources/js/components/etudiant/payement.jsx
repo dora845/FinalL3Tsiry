@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
-export default function PaymentForm() {
+export default function PaymentForm({ tosemestre, toannee }) {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -32,6 +32,10 @@ export default function PaymentForm() {
                         fullWidth
                         autoComplete="cc-number"
                         variant="standard"
+                        value={tosemestre.semestre}
+                        onChange={(e) => {
+                            tosemestre.setSemestre(e.target.value);
+                        }}
                     />
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -41,6 +45,10 @@ export default function PaymentForm() {
                         fullWidth
                         autoComplete="cc-exp"
                         variant="standard"
+                        value={toannee.annee}
+                        onChange={(e) => {
+                            toannee.setAnnee(e.target.value);
+                        }}
                     />
                 </Grid>
 

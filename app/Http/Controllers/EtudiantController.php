@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\demande;
 use App\Models\etudiant;
+use App\Models\infomention;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,9 +25,10 @@ class EtudiantController extends Controller
                 'email' => 'required|email',
                 'numcarte' => 'required',
                 'birthdate' => 'date|before:now',
-                'mentions' => 'required|exists:infomentions,mentions',
-                'parcours' => 'required|exists:infomentions,parcours',
-                'niveau' => 'required|exists:infomentions,niveau',
+                // 'mentions' => 'required|exists:infomentions,mentions',
+                'mentions' => 'required',
+                'parcours' => 'required',
+                'niveau' => 'required',
                 'type' => 'required',
             ]);
             if ($validateUser->fails()) {
@@ -42,6 +44,13 @@ class EtudiantController extends Controller
             $demande->type = $request->type;
             $demande->annee = $request->annee;
             $demande->semestre = $request->semestre;
+
+
+            infomention::updateOrCreate(['mentions' => $request->mentions], [
+                'mentions' => $request->mentions,
+                'parcours' => $request->parcours,
+                'niveau' => $request->niveau
+            ]);
 
             etudiant::updateOrCreate(["numcarte" => $request->numcarte], [
                 'numcarte' => $request->numcarte,

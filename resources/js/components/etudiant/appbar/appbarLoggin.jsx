@@ -11,49 +11,49 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import logo from "../../../../../assets/logoSiansa.png";
-import { Link } from "@mui/icons-material";
+import AdbIcon from "@mui/icons-material/Adb";
+import { red } from "@mui/material/colors";
+import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
+const ColorButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(red[500]),
+    backgroundColor: red[500],
+    "&:hover": {
+        backgroundColor: red[700],
+    },
+}));
 const pages = [
-    "Validation Credit",
-    "Releve de Note",
-    "Certificat de Scolarite",
+    { page: "Validation Credit", link: "/" },
+    { page: "Releve de Note", link: "/releve" },
+    { page: "Certificat de Scolarite", link: "/certificat" },
 ];
 
-function AppbarLoggin() {
+function AppBarLoggin() {
+    const navigate = useNavigate();
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
 
-    const navigate = useNavigate();
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    {/* <img
-                        src={logo}
-                        width={20}
-                        sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                    /> */}
-                    <Avatar
-                        alt="Logo"
-                        src={logo}
-                        // sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+                    <AdbIcon
+                        sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
                     />
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
                         href="/"
-                        ml={4}
                         sx={{
                             mr: 2,
                             display: { xs: "none", md: "flex" },
@@ -103,37 +103,29 @@ function AppbarLoggin() {
                         >
                             {pages.map((page) => (
                                 <MenuItem
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
+                                    key={page.page}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setAnchorElNav(null);
+                                        navigate(page.link);
+                                    }}
                                 >
                                     <Typography textAlign="center">
-                                        {page}
+                                        {page.page}
                                     </Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
-
-                    {/* <AdbIcon
+                    <AdbIcon
                         sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                    /> */}
-                    <Avatar
-                        alt="Logo"
-                        src={logo}
-                        sx={{ display: { xs: "flex", md: "none" } }}
                     />
-                    {/* <img
-                        src={logo}
-                        width={20}
-                        sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                    /> */}
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
                         href=""
                         sx={{
-                            ml: 4,
                             mr: 2,
                             display: { xs: "flex", md: "none" },
                             flexGrow: 1,
@@ -154,31 +146,36 @@ function AppbarLoggin() {
                     >
                         {pages.map((page) => (
                             <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
+                                key={page.page}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setAnchorElNav(null);
+                                    navigate(page.link);
+                                }}
+                                // onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: "white", display: "block" }}
                             >
-                                {page}
+                                {page.page}
                             </Button>
                         ))}
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Link
-                            // color={"#000000"}
-                            to="/login"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                navigate("/login");
-                            }}
-                            variant="body2"
-                        >
-                            {"Se connecter"}
-                        </Link>
+                        <Tooltip title="Se connecter">
+                            <ColorButton
+                                sx={{ p: 0 }}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    navigate("/login");
+                                }}
+                            >
+                                Se connecter
+                            </ColorButton>
+                        </Tooltip>
                     </Box>
                 </Toolbar>
             </Container>
         </AppBar>
     );
 }
-export default AppbarLoggin;
+export default AppBarLoggin;

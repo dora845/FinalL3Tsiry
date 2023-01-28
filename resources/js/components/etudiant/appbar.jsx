@@ -43,7 +43,7 @@ function ResponsiveAppBar({ isLogged }) {
         setAnchorElUser(null);
     };
     const navigate = useNavigate();
-    console.log(isLogged);
+    // console.log(isLogged);
     if (isLogged) {
         return (
             <>
