@@ -17,6 +17,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
+import { MenuItem } from "@mui/material";
 window.Swal = Swal;
 
 const toast = Swal.mixin({
@@ -100,6 +101,8 @@ export default function Register() {
 
     // const [address, setAddress] = useState("");
     // const [nation, setNation] = useState("");
+    const allSexe = ["masculin", "feminin"];
+    const allPoste = ["mention", "scolarite"];
 
     return (
         <ThemeProvider theme={theme}>
@@ -247,8 +250,18 @@ export default function Register() {
                                             setSexe(e.target.value);
                                         }}
                                         name="sexe"
+                                        select
                                         // autoComplete="email"
-                                    />
+                                    >
+                                        {allSexe.map((option) => (
+                                            <MenuItem
+                                                key={option}
+                                                value={option}
+                                            >
+                                                {option}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
                                 </Grid>
                                 <Grid item xs={12} sm={8}>
                                     <TextField
@@ -274,7 +287,17 @@ export default function Register() {
                                             setPoste(e.target.value);
                                         }}
                                         name="Poste"
-                                    />
+                                        select
+                                    >
+                                        {allPoste.map((option) => (
+                                            <MenuItem
+                                                key={option}
+                                                value={option}
+                                            >
+                                                {option}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
