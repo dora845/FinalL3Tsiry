@@ -346,7 +346,12 @@ export default function EnhancedTable({ token }) {
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - infoRow.length) : 0;
-    React.useEffect(async () => handleData(), []);
+    React.useEffect(() => {
+        async function test() {
+            await handleData();
+        }
+        test();
+    }, []);
     return (
         <Box sx={{ width: "100%" }}>
             <Paper sx={{ width: "100%", mb: 2 }}>

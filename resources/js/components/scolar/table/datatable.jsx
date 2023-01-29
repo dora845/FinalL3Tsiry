@@ -246,9 +246,9 @@ export default function EnhancedTable({ token }) {
                     authorization: "bearer " + token,
                 },
             })
-            .then((res) => {
+            .then(async (res) => {
                 // console.log(res.data.data);
-                const test = FetchData(res.data.data);
+                const test = await FetchData(res.data.data);
                 setInfoRow(test);
             })
             .catch((error) => {
@@ -336,7 +336,12 @@ export default function EnhancedTable({ token }) {
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - infoRow.length) : 0;
 
-    React.useEffect(async () => handleData(), []);
+    React.useEffect(() => {
+        async function test() {
+            await handleData();
+        }
+        test();
+    }, []);
     return (
         <Box sx={{ width: "100%" }}>
             <Paper sx={{ width: "100%", mb: 2 }}>
