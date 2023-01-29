@@ -54,7 +54,7 @@ const theme = createTheme({
     },
 });
 
-export default function SignInSide() {
+export default function SignInSide({ setToken }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -66,9 +66,11 @@ export default function SignInSide() {
                 .then(({ data }) => {
                     toast.fire({
                         icon: "success",
-                        title: "login",
+                        title: data.message,
                     });
-                    navigate("/");
+                    setToken(data.token);
+
+                    navigate("/user/mentions");
                 })
                 .catch(({ response }) => {
                     toast.fire({

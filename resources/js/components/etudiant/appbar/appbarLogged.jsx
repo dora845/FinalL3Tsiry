@@ -15,12 +15,8 @@ import logo from "../../../../../assets/logoSiansa.png";
 import { Link } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
-const pages = [
-    "Validation Credit",
-    "Releve de Note",
-    "Certificat de Scolarite",
-];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Liste demandes", "statistiques"];
+const settings = ["Logout"];
 
 function AppbarLogged() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
