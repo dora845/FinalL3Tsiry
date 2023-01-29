@@ -12,15 +12,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../../../../assets/logoSiansa.png";
-import { Link } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 const pages = ["Liste demandes", "statistiques"];
-const settings = ["Logout"];
+const settings = [{ label: "Logout", link: "/" }];
 
-function AppbarLogged() {
+function AppbarLogged({ setToken }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const navigate = useNavigate();
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -106,7 +106,9 @@ function AppbarLogged() {
                             {pages.map((page) => (
                                 <MenuItem
                                     key={page}
-                                    onClick={handleCloseNavMenu}
+                                    onClick={(e) => {
+                                        handleCloseNavMenu;
+                                    }}
                                 >
                                     <Typography textAlign="center">
                                         {page}
@@ -195,11 +197,15 @@ function AppbarLogged() {
                         >
                             {settings.map((setting) => (
                                 <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
+                                    key={setting.label}
+                                    onClick={(e) => {
+                                        // e.preventDefault();
+                                        // setToken(null);
+                                        navigate(setting.link);
+                                    }}
                                 >
                                     <Typography textAlign="center">
-                                        {setting}
+                                        {setting.label}
                                     </Typography>
                                 </MenuItem>
                             ))}

@@ -9,6 +9,7 @@ import SignInSide from "../components/login/indexLogin";
 import Register from "../components/login/register";
 import IndexMentions from "../components/mention";
 import NotFound from "../components/NotFound";
+import IndexSco from "../components/scolar";
 const Router = () => {
     const [tokened, setTokened] = useState();
     return (
@@ -26,7 +27,13 @@ const Router = () => {
                 <Route path="/certificat" element={<Certificat />} />
                 <Route
                     path="/user/mentions"
-                    element={<IndexMentions token={tokened} />}
+                    element={
+                        <IndexMentions token={tokened} setToken={setTokened} />
+                    }
+                />
+                <Route
+                    path="/user/sco"
+                    element={<IndexSco token={tokened} setToken={setTokened} />}
                 />
             </Routes>
         </div>

@@ -70,7 +70,11 @@ export default function SignInSide({ setToken }) {
                     });
                     setToken(data.token);
 
-                    navigate("/user/mentions");
+                    if (data.type == "mention") {
+                        navigate("/user/mentions");
+                    } else {
+                        navigate("/user/sco");
+                    }
                 })
                 .catch(({ response }) => {
                     toast.fire({

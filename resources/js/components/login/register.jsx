@@ -329,7 +329,7 @@ export default function Register() {
                                         to="/"
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            navigate("/");
+                                            navigate("/login");
                                         }}
                                         variant="body2"
                                     >

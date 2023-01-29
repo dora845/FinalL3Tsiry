@@ -49,7 +49,7 @@ const theme = createTheme({
     },
 });
 
-export default function IndexMentions({ token }) {
+export default function IndexMentions({ token, setToken }) {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
