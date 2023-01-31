@@ -204,7 +204,7 @@ function EnhancedTableToolbar(props) {
                     id="tableTitle"
                     component="div"
                 >
-                    Certificat de scolarite
+                    Releve de Note
                 </Typography>
             )}
 
@@ -229,7 +229,7 @@ EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
 
-export default function EnhancedTable({ token }) {
+export default function DataReleve({ token }) {
     const [order, setOrder] = React.useState("asc");
     const [orderBy, setOrderBy] = React.useState("calories");
     const [selected, setSelected] = React.useState([]);
@@ -265,7 +265,7 @@ export default function EnhancedTable({ token }) {
                 for (const user in users) {
                     if (Object.hasOwnProperty.call(users, user)) {
                         const user1 = users[user];
-                        if (demander.type === "certificat") {
+                        if (demander.type === "releve") {
                             test.push(
                                 createData(
                                     user1.name,

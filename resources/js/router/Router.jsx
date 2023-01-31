@@ -10,6 +10,7 @@ import Register from "../components/login/register";
 import IndexMentions from "../components/mention";
 import NotFound from "../components/NotFound";
 import IndexSco from "../components/scolar";
+import ReleveSco from "../components/scolar/releve";
 const Router = () => {
     const [tokened, setTokened] = useState();
     return (
@@ -34,6 +35,12 @@ const Router = () => {
                 <Route
                     path="/user/sco"
                     element={<IndexSco token={tokened} setToken={setTokened} />}
+                />
+                <Route
+                    path="/user/rel"
+                    element={
+                        <ReleveSco token={tokened} setToken={setTokened} />
+                    }
                 />
             </Routes>
         </div>
