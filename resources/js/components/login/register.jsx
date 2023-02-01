@@ -114,8 +114,7 @@ export default function Register() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage:
-                            "url(https://source.unsplash.com/random)",
+                        backgroundImage: "url(/img/background.jpg)",
                         backgroundRepeat: "no-repeat",
                         backgroundColor: (t) =>
                             t.palette.mode === "light"
@@ -143,9 +142,10 @@ export default function Register() {
                             alignItems: "center",
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                            <LockOutlinedIcon />
-                        </Avatar>
+                        <img
+                            src="/img/logoSiansa.png"
+                            style={{ maxHeight: 150, marginBottom: 20 }}
+                        />
                         <Typography component="h1" variant="h5">
                             S'inscrire
                         </Typography>
