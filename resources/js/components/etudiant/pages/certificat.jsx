@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -16,6 +16,7 @@ import { red } from "@mui/material/colors";
 import ResponsiveAppBar from "../appbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ErrorAlert, checkData } from "../checkout";
 
 import Swal from "sweetalert2";
 window.Swal = Swal;
@@ -98,6 +99,10 @@ export default function Certificat() {
     const [activeStep, setActiveStep] = React.useState(0);
 
     const handleNext = () => {
+        if (!checkData(data[activeStep])) {
+            setHasError(true);
+            return;
+        }
         setActiveStep(activeStep + 1);
         console.log(activeStep);
         if (activeStep === steps.length - 1) {
@@ -155,6 +160,54 @@ export default function Certificat() {
     const [parcours, setParcours] = useState("");
     const [niveau, setNiveau] = useState("");
 
+    const [data, setData] = useState([
+        [
+            email,
+            numcarte,
+            name,
+            firstname,
+            birthdate,
+            birthplace,
+            mentions,
+            parcours,
+            niveau,
+        ],
+        [annee, semestre],
+    ]);
+
+    useEffect(() => {
+        setHasError(false);
+        const newData = [
+            [
+                email,
+                numcarte,
+                name,
+                firstname,
+                birthdate,
+                birthplace,
+                mentions,
+                parcours,
+                niveau,
+            ],
+            [annee, semestre],
+        ];
+        setData(newData);
+    }, [
+        email,
+        numcarte,
+        name,
+        firstname,
+        birthdate,
+        birthplace,
+        mentions,
+        parcours,
+        niveau,
+        annee,
+        semestre,
+    ]);
+
+    const [hasError, setHasError] = useState(false);
+
     /******** end post ********* */
     return (
         <ThemeProvider theme={theme}>
@@ -197,6 +250,8 @@ export default function Certificat() {
                         </React.Fragment>
                     ) : (
                         <React.Fragment>
+                            <ErrorAlert hasError={hasError} />
+
                             {getStepContent(
                                 activeStep,
                                 {

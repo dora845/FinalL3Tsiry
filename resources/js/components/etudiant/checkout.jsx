@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -16,6 +16,8 @@ import { red } from "@mui/material/colors";
 import ResponsiveAppBar from "./appbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import Collapse from "@mui/material/Collapse";
 
 import Swal from "sweetalert2";
 window.Swal = Swal;
@@ -95,10 +97,19 @@ const theme = createTheme({
     },
 });
 
+export const checkData = (data) => {
+    console.log("data", data);
+    return Array.isArray(data) && data?.every((v) => !!v);
+};
+
 export default function IndexEtudiant() {
     const [activeStep, setActiveStep] = React.useState(0);
 
     const handleNext = () => {
+        if (!checkData(data[activeStep])) {
+            setHasError(true);
+            return;
+        }
         setActiveStep(activeStep + 1);
         console.log(activeStep);
         if (activeStep === steps.length - 1) {
@@ -156,6 +167,53 @@ export default function IndexEtudiant() {
     const [parcours, setParcours] = useState("");
     const [niveau, setNiveau] = useState("");
 
+    const [data, setData] = useState([
+        [
+            email,
+            numcarte,
+            name,
+            firstname,
+            birthdate,
+            birthplace,
+            mentions,
+            parcours,
+            niveau,
+        ],
+        [annee, semestre],
+    ]);
+
+    useEffect(() => {
+        setHasError(false);
+        const newData = [
+            [
+                email,
+                numcarte,
+                name,
+                firstname,
+                birthdate,
+                birthplace,
+                mentions,
+                parcours,
+                niveau,
+            ],
+            [annee, semestre],
+        ];
+        setData(newData);
+    }, [
+        email,
+        numcarte,
+        name,
+        firstname,
+        birthdate,
+        birthplace,
+        mentions,
+        parcours,
+        niveau,
+        annee,
+        semestre,
+    ]);
+
+    const [hasError, setHasError] = useState(false);
     /******** end post ********* */
     return (
         <ThemeProvider theme={theme}>
@@ -198,6 +256,7 @@ export default function IndexEtudiant() {
                         </React.Fragment>
                     ) : (
                         <React.Fragment>
+                            <ErrorAlert hasError={hasError} />
                             {getStepContent(
                                 activeStep,
                                 {
@@ -263,3 +322,11 @@ export default function IndexEtudiant() {
         </ThemeProvider>
     );
 }
+
+export const ErrorAlert = ({ hasError }) => (
+    <Collapse in={hasError}>
+        <Alert severity="error" style={{ marginBottom: "20px" }}>
+            Veuillez completer tous les champs du formulaire avant de proceder!
+        </Alert>
+    </Collapse>
+);
