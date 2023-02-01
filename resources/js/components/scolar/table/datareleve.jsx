@@ -22,6 +22,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import axios from "axios";
+import { ScoTable } from "./datatable";
 
 function createData(name, calories, fat, carbs, protein, type) {
     return {
@@ -344,6 +345,13 @@ export default function DataReleve({ token }) {
         }
         test();
     }, []);
+
+    return (
+        <Box sx={{ width: "100%", marginTop: 5 }}>
+            <ScoTable data={infoRow} />
+        </Box>
+    );
+
     return (
         <Box sx={{ width: "100%" }}>
             <Paper sx={{ width: "100%", mb: 2 }}>
