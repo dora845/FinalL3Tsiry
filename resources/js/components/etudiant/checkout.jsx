@@ -74,7 +74,14 @@ function getStepContent(
                 />
             );
         case 1:
-            return <PaymentForm toannee={toAnnee} tosemestre={toSemestre} />;
+            return (
+                <PaymentForm
+                    toannee={toAnnee}
+                    tosemestre={toSemestre}
+                    to="le/la chef de mention"
+                    type="validation de credit"
+                />
+            );
         default:
             throw new Error("Unknown step");
     }

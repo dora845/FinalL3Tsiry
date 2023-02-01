@@ -74,7 +74,13 @@ function getStepContent(
                 />
             );
         case 1:
-            return <PaymentForm toannee={toAnnee} tosemestre={toSemestre} />;
+            return (
+                <PaymentForm
+                    toannee={toAnnee}
+                    tosemestre={toSemestre}
+                    type="releve de note"
+                />
+            );
         default:
             throw new Error("Unknown step");
     }
