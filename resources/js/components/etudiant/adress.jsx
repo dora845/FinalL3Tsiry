@@ -304,7 +304,7 @@ export default function AddressForm({
                     />
                 </Grid>
 
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                     <FormControlLabel
                         control={
                             <Checkbox
@@ -315,7 +315,7 @@ export default function AddressForm({
                         }
                         label="utiliser l'adresse e-mail pour la validation"
                     />
-                </Grid>
+                </Grid> */}
             </Grid>
         </React.Fragment>
     );

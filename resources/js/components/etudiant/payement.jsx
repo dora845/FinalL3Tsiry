@@ -64,7 +64,7 @@ export default function PaymentForm({
                     />
                 </Grid>
 
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                     <FormControlLabel
                         control={
                             <Checkbox
@@ -75,7 +75,7 @@ export default function PaymentForm({
                         }
                         label="J'accepte les condition d'utilisation"
                     />
-                </Grid>
+                </Grid> */}
             </Grid>
         </React.Fragment>
     );
