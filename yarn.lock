@@ -719,6 +719,37 @@
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.3.1.tgz#3bb0b6ddc0a276e8dc1138d08f63035e4e23e8bf"
   integrity sha512-+eun1Wtf72RNRSqgU7qM2AMX/oHp+dnx7BHk1qhK5ZHzdHTUU4LA1mGG1vT+jMc8sbhG3orvsfOmryjzx2PzQw==
 
+"@tanstack/match-sorter-utils@8.7.6":
+  version "8.7.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/match-sorter-utils/-/match-sorter-utils-8.7.6.tgz#ccf54a37447770e0cf0fe49a579c595fd2655b16"
+  integrity sha512-2AMpRiA6QivHOUiBpQAVxjiHAA68Ei23ZUMNaRJrN6omWiSFLoYrxGcT6BXtuzp0Jw4h6HZCmGGIM/gbwebO2A==
+  dependencies:
+    remove-accents "0.4.2"
+
+"@tanstack/react-table@8.7.9":
+  version "8.7.9"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.7.9.tgz#9efcd168fb0080a7e0bc213b5eac8b55513babf4"
+  integrity sha512-6MbbQn5AupSOkek1+6IYu+1yZNthAKTRZw9tW92Vi6++iRrD1GbI3lKTjJalf8lEEKOqapPzQPE20nywu0PjCA==
+  dependencies:
+    "@tanstack/table-core" "8.7.9"
+
+"@tanstack/react-virtual@3.0.0-beta.30":
+  version "3.0.0-beta.30"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.0.0-beta.30.tgz#7236f43bdc4755b00872dfef1cb2006dd8f717f7"
+  integrity sha512-Sn1SSbSjDwb++jVOtgiQ/OHFMdcXFg8Qx02/cn0eq9xxHIhm/SqrKDpywIeydgNdOsdfBomOfxm/4gqTLrY1gg==
+  dependencies:
+    "@tanstack/virtual-core" "3.0.0-beta.30"
+
+"@tanstack/table-core@8.7.9":
+  version "8.7.9"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.7.9.tgz#0e975f8a5079972f1827a569079943d43257c42f"
+  integrity sha512-4RkayPMV1oS2SKDXfQbFoct1w5k+pvGpmX18tCXMofK/VDRdA2hhxfsQlMvsJ4oTX8b0CI4Y3GDKn5T425jBCw==
+
+"@tanstack/virtual-core@3.0.0-beta.30":
+  version "3.0.0-beta.30"
+  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.0.0-beta.30.tgz#7fd5e206dd706297b8234227c330c203a795f061"
+  integrity sha512-fewNoKiJeG5v0T4jg7UO99G+hUYDHig6AkiIeqvC1O2zEw96MlzR6DXw91aqxcsIPSVp83IPsgNa7su8yZWldw==
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -1061,6 +1092,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+highlight-words@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/highlight-words/-/highlight-words-1.2.1.tgz#6de4194bb28fc647431859af7c50531bb93af80e"
+  integrity sha512-FtF50tuaaYathtSPFk5FwGf0Zex5iqNsTx/OsVM6mdsB3xqs5nM+PAoPWs/gIUxGF3/Qqu2v86sAUenTh6oL3Q==
+
 hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.1:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
@@ -1146,6 +1182,16 @@ magic-string@^0.27.0:
   integrity sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.13"
+
+material-react-table@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/material-react-table/-/material-react-table-1.6.2.tgz#a77634f458114eacfe8365cea21d014d3568bfed"
+  integrity sha512-CWtk2Z3Vd1/xCgFTjz7Af5WDLjZmhxwsvD+3ilXBBXlX5IMNCO1ncufuYPRqR6FulWFF9d8EnVIiYlz307qCag==
+  dependencies:
+    "@tanstack/match-sorter-utils" "8.7.6"
+    "@tanstack/react-table" "8.7.9"
+    "@tanstack/react-virtual" "3.0.0-beta.30"
+    highlight-words "1.2.1"
 
 mime-db@1.52.0:
   version "1.52.0"
@@ -1303,6 +1349,11 @@ regenerator-runtime@^0.13.11:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
   integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
+
+remove-accents@0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/remove-accents/-/remove-accents-0.4.2.tgz#0a43d3aaae1e80db919e07ae254b285d9e1c7bb5"
+  integrity sha512-7pXIJqJOq5tFgG1A2Zxti3Ht8jJF337m4sowbuHsW30ZnkQFnDzy9qBNhgzX8ZLW4+UBcXiiR7SwR6pokHsxiA==
 
 resolve-from@^4.0.0:
   version "4.0.0"

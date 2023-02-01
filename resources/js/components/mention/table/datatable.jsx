@@ -1,4 +1,7 @@
-import * as React from "react";
+import React, { useMemo } from "react";
+
+import MaterialReactTable from "material-react-table";
+
 import PropTypes from "prop-types";
 import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -213,7 +216,7 @@ function EnhancedTableToolbar(props) {
                     id="tableTitle"
                     component="div"
                 >
-                    Nutrition
+                    {/* Nutrition */}
                 </Typography>
             )}
 
@@ -352,6 +355,15 @@ export default function EnhancedTable({ token }) {
         }
         test();
     }, []);
+
+    console.log("infoRow", infoRow);
+
+    return (
+        <Box sx={{ width: "100%", marginTop: 5 }}>
+            <ValidationTable data={infoRow} />
+        </Box>
+    );
+
     return (
         <Box sx={{ width: "100%" }}>
             <Paper sx={{ width: "100%", mb: 2 }}>
@@ -371,7 +383,6 @@ export default function EnhancedTable({ token }) {
                             rowCount={infoRow.length}
                         />
                         <TableBody>
-                            {console.log(infoRow.length)}
                             {stableSort(infoRow, getComparator(order, orderBy))
                                 .slice(
                                     page * rowsPerPage,
@@ -457,3 +468,45 @@ export default function EnhancedTable({ token }) {
         </Box>
     );
 }
+
+const ValidationTable = ({ data }) => {
+    //should be memoized or stable
+
+    const columns = useMemo(
+        () => [
+            {
+                accessorKey: "name", //access nested data with dot notation
+
+                header: "Nom",
+            },
+
+            {
+                accessorKey: "calories",
+
+                header: "Email",
+            },
+
+            {
+                accessorKey: "fat", //normal accessorKey
+
+                header: "Annee",
+            },
+
+            {
+                accessorKey: "carbs",
+
+                header: "Semestre",
+            },
+
+            {
+                accessorKey: "protein",
+
+                header: "NumCarte",
+            },
+        ],
+
+        []
+    );
+
+    return <MaterialReactTable columns={columns} data={data} />;
+};

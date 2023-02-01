@@ -14,7 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import logo from "../../../../../assets/logoSiansa.png";
 import { useNavigate } from "react-router-dom";
 
-const pages = ["Liste demandes", "statistiques"];
+// const pages = ["Liste demandes", "statistiques"];
+const pages = ["Liste demandes"];
 const settings = [{ label: "Logout", link: "/" }];
 
 function AppbarLogged({ setToken }) {

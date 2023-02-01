@@ -231,13 +231,14 @@ export default function Certificat() {
                     {activeStep === steps.length ? (
                         <React.Fragment>
                             <Typography variant="h5" gutterBottom>
-                                Thank you for your order.
+                                Votre demande a ete bien envoye.
                             </Typography>
                             <Typography variant="subtitle1">
-                                Your order number is #2001539. We have emailed
-                                your order confirmation, and will send you an
-                                update when your order has shipped.
+                                Votre demande a ete bien envoye. Nous vous
+                                enverons un email lorsque votre demande sera
+                                bien traite.
                             </Typography>
+                            <br />
                             <Button
                                 variant="outlined"
                                 onClick={(e) => {
